@@ -15,14 +15,23 @@ while True:
         balance = amount + balance
         print("Yeni bakiyeniz: ", balance)
     elif choice == "3":
-        amount = int(input("Çekek istediğiniz tutarı girin: "))
-        if 0 < amount <= balance:
-            balance = balance - amount
-            print("Yeni bakiyeniz: ", balance)
-        elif amount <= 0:
-            print("Lütfen pozitif bir sayı girin.")
-        else:
-            print("Yeterli bakiye yok!")
+        while True:
+            try:
+                amount = int(input("Çekmek istediğiniz tutarı giriniz: "))
+
+                if amount <= 0:
+                    print("Lütfen pozitif bir sayı giriniz.")
+                elif amount <= balance:
+                    balance = balance - amount
+                    print("İşlem başarılı.")
+                    print("Yeni bakiyeniz:", balance)
+                    break
+                else:
+                    print("Yeterli bakiye yok!")
+
+            except:
+                print("Lütfen geçerli bir sayı giriniz.")
+
     elif choice == "4":
         print("Program kapandı.")
         break 
